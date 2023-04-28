@@ -93,6 +93,22 @@ dt = DecisionTreeClassifier()
 dt.fit(X_train, y_train)
 y_pred_dt = dt.predict(X_test)
 
+# Count both good and bad loans (Decision trees)
+count_good = 0
+count_bad = 0
+for i in y_pred_dt:
+    if i == 'good':
+        count_good += 1
+    else:
+        count_bad += 1
+
+# Produce bar graph of results
+plt.bar(['Good', 'Bad'], [count_good, count_bad])
+plt.title('Predicted Credit Classification with Decision trees')
+plt.xlabel('Credit class')
+plt.ylabel('Count')
+plt.show()
+
 
 
 
