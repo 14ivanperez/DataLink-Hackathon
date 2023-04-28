@@ -110,5 +110,25 @@ plt.ylabel('Count')
 plt.show()
 
 
+#  Model Validation
+from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
+print("Logistic regression")
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+le = LabelEncoder()
+y = le.fit_transform(y_pred)
+y1 = le.fit_transform(y_test) 
+fpr_lr, tpr_lr, thresholds_lr = roc_curve(y, y1)
+roc_auc_lr = auc(fpr_lr, tpr_lr)
+print("Area under ROC curve: ", roc_auc_lr)
 
+print("Decision tree")
+print(confusion_matrix(y_test, y_pred_dt))
+print(classification_report(y_test, y_pred_dt))
+le = LabelEncoder()
+y3 = le.fit_transform(y_pred_dt)
+y4 = le.fit_transform(y_test) 
+fpr_dt, tpr_dt, thresholds_dt = roc_curve(y3, y4)
+roc_auc_dt = auc(fpr_dt, tpr_dt)
+print("Area under ROC curve:", roc_auc_dt)
 
