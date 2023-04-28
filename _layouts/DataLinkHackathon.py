@@ -28,3 +28,5 @@ plt.show()
 desc_stats = df[numeric_vars].describe()
 desc_stats.to_csv('desc_stats.csv')
 
+#Save descriptive statistics as an image
+desc_stats.plot(kind='bar').get_figure().savefig("estadisticas_descriptivas.jpg")
