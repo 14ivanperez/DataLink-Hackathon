@@ -70,3 +70,19 @@ model.fit(X_train, y_train)
 # make predictions with testing data
 y_pred = model.predict(X_test)
 
+# Count both good and bad loans
+count_good = 0
+count_bad = 0
+for i in y_pred:
+    if i == 'good':
+        count_good += 1
+    else:
+        count_bad += 1
+
+# Produce bar graph of results
+plt.bar(['Good', 'Bad'], [count_good, count_bad])
+plt.title('Predicted Credit Classification with Logistic Regression')
+plt.xlabel('Credit class')
+plt.ylabel('Count')
+plt.show()
+
