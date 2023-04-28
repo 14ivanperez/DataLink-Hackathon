@@ -7,6 +7,9 @@ from sklearn.model_selection import train_test_split
 df = pd.read_csv('C:/Users/ivvan/Desktop/Python/credit_traindata.csv')
 
 # Exploratory Data Analysis
+print(df.head())
+print(df.describe())
+print(df.info())
 
 # Select numerical variables
 numeric_vars = ['duration', 'credit_amount', 'employment', 'personal_status', 'num_dependents']
