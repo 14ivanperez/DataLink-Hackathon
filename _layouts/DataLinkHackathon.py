@@ -62,7 +62,7 @@ X_encoded = sp.hstack((X_cat, X_num))
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2, random_state=42)
 
-# adjust model to logistic regression
+# Model with logistic regression
 from sklearn.linear_model import LogisticRegression
 model = LogisticRegression()
 model.fit(X_train, y_train)
@@ -70,7 +70,7 @@ model.fit(X_train, y_train)
 # make predictions with testing data
 y_pred = model.predict(X_test)
 
-# Count both good and bad loans
+# Count both good and bad loans (logistic regression)
 count_good = 0
 count_bad = 0
 for i in y_pred:
@@ -85,4 +85,14 @@ plt.title('Predicted Credit Classification with Logistic Regression')
 plt.xlabel('Credit class')
 plt.ylabel('Count')
 plt.show()
+
+# Decision trees model
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
+dt = DecisionTreeClassifier()
+dt.fit(X_train, y_train)
+y_pred_dt = dt.predict(X_test)
+
+
+
 
