@@ -132,3 +132,22 @@ fpr_dt, tpr_dt, thresholds_dt = roc_curve(y3, y4)
 roc_auc_dt = auc(fpr_dt, tpr_dt)
 print("Area under ROC curve:", roc_auc_dt)
 
+# Plot ROC Curve of both models
+plt.plot(fpr_lr, tpr_lr, label='Logistics regression (area = %0.2f)' % roc_auc_lr)
+plt.plot(fpr_dt, tpr_dt, label='Decision tree (area = %0.2f)' % roc_auc_dt)
+
+plt.plot([0, 1], [0, 1],'r--')
+plt.xlim([0, 1])
+plt.ylim([0, 1])
+plt.xlabel('False positive rate')
+plt.ylabel('True Positive rate')
+plt.title('Curva ROC')
+plt.legend(loc="lower right")
+plt.show()
+
+
+# Plot confusion matrix 
+from sklearn.metrics import plot_confusion_matrix
+
+plot_confusion_matrix(model, X_test, y_test, display_labels=['bad', 'good'])
+plt.show()
