@@ -31,10 +31,9 @@ plt.show()
 
 # Descriptive statistics
 desc_stats = df[numeric_vars].describe()
-desc_stats.to_csv('desc_stats.csv')
 
 #Save descriptive statistics as an image
-desc_stats.plot(kind='bar').get_figure().savefig("estadisticas_descriptivas.jpg")
+desc_stats.plot(kind='bar').get_figure().savefig("descriptive_statistics.jpg")
 
 
 # Divide data in training and test
@@ -68,12 +67,12 @@ model = LogisticRegression()
 model.fit(X_train, y_train)
 
 # make predictions with testing data
-y_pred = model.predict(X_test)
+y_pred_lr = model.predict(X_test)
 
 # Count both good and bad loans (logistic regression)
 count_good = 0
 count_bad = 0
-for i in y_pred:
+for i in y_pred_lr:
     if i == 'good':
         count_good += 1
     else:
@@ -83,7 +82,7 @@ for i in y_pred:
 plt.bar(['Good', 'Bad'], [count_good, count_bad])
 plt.title('Predicted Credit Classification with Logistic Regression')
 plt.xlabel('Credit class')
-plt.ylabel('Count')
+plt.ylabel('Credits Count')
 plt.show()
 
 # Decision trees model
@@ -106,17 +105,18 @@ for i in y_pred_dt:
 plt.bar(['Good', 'Bad'], [count_good, count_bad])
 plt.title('Predicted Credit Classification with Decision trees')
 plt.xlabel('Credit class')
-plt.ylabel('Count')
+plt.ylabel('Credits Count')
 plt.show()
 
 
 #  Model Validation
 from sklearn.metrics import confusion_matrix, classification_report, roc_curve, auc
+from sklearn.preprocessing import LabelEncoder
 print("Logistic regression")
-print(confusion_matrix(y_test, y_pred))
-print(classification_report(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred_lr))
+print(classification_report(y_test, y_pred_lr))
 le = LabelEncoder()
-y = le.fit_transform(y_pred)
+y = le.fit_transform(y_pred_lr)
 y1 = le.fit_transform(y_test) 
 fpr_lr, tpr_lr, thresholds_lr = roc_curve(y, y1)
 roc_auc_lr = auc(fpr_lr, tpr_lr)
