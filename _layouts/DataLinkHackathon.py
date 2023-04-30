@@ -7,6 +7,7 @@ from sklearn.preprocessing import OneHotEncoder
 # Read CSV file
 df = pd.read_csv('C:/Users/ivvan/Desktop/Python/credit_traindata.csv')
 
+
 # Exploratory Data Analysis
 print(df.head())
 print(df.describe())
