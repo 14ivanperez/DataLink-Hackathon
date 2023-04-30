@@ -142,7 +142,7 @@ plt.xlim([0, 1])
 plt.ylim([0, 1])
 plt.xlabel('False positive rate')
 plt.ylabel('True Positive rate')
-plt.title('Curva ROC')
+plt.title('ROC curve')
 plt.legend(loc="lower right")
 plt.show()
 
@@ -151,4 +151,5 @@ plt.show()
 from sklearn.metrics import plot_confusion_matrix
 
 plot_confusion_matrix(model, X_test, y_test, display_labels=['bad', 'good'])
+plt.title('Confusion matrix')
 plt.show()
