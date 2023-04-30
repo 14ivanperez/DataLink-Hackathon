@@ -150,6 +150,11 @@ plt.show()
 # Plot confusion matrix 
 from sklearn.metrics import plot_confusion_matrix
 
+# for logistic regression model
 plot_confusion_matrix(model, X_test, y_test, display_labels=['bad', 'good'])
-plt.title('Confusion matrix')
+plt.title('Confusion matrix of LR model')
+plt.show()
+# for decision tree model
+plot_confusion_matrix(dt, X_test, y_test, display_labels=['bad', 'good'])
+plt.title('Confusion matrix of DT model')
 plt.show()
